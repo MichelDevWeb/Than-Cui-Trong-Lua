@@ -1,37 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Than Củi Trọng Lúa - Premium Charcoal Shop
+
+![Than Củi Trọng Lúa Banner](/public/images/banner.jpg)
+
+## Overview
+
+Than Củi Trọng Lúa is a premium charcoal supplier specializing in high-quality natural charcoal for restaurants, BBQ establishments, and professional chefs. Our products are 100% natural, HACCP certified, and delivered quickly within Ho Chi Minh City and surrounding areas.
+
+## Features
+
+- 🔥 **Premium Quality**: 100% natural charcoal, no additives
+- 🛡️ **Safety Certified**: HACCP food safety standards
+- ⚡ **Fast Delivery**: 2-hour delivery in HCMC
+- 🚚 **Free Shipping**: Available for qualifying orders
+
+## Project Structure
+
+```
+public/
+  └── images/
+      ├── logo.png          # Company logo
+      ├── banner.jpg        # Main banner image
+      ├── products/         # Product images
+      │   ├── product1.jpg
+      │   ├── product2.jpg
+      │   └── ...
+      └── gallery/         # Additional images
+          ├── gallery1.jpg
+          └── ...
+```
+
+## Tech Stack
+
+- ⚡ Next.js 14
+- 🎨 Tailwind CSS
+- 🎭 Framer Motion
+- 🌓 Next Themes (Dark Mode)
+- 📱 Responsive Design
 
 ## Getting Started
 
-First, run the development server:
-
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/than-cui-trong-lua.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Image Credits
 
-To learn more about Next.js, take a look at the following resources:
+| Image | Description | Source |
+|-------|-------------|---------|
+| ![Logo](/public/images/logo.png) | Company Logo | © Than Củi Trọng Lúa |
+| ![Banner](/public/images/banner.jpg) | Main Banner | © Than Củi Trọng Lúa |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 📞 Phone: +84 123 456 789
+- 📍 Address: [Your Address]
+- 🌐 Website: [Your Website]
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Than-Cui-Trong-Lua
+© 2024 Than Củi Trọng Lúa. All rights reserved.
