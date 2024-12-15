@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, EffectCards } from 'swiper/modules';
 import Image from 'next/image';
-import { Star, ArrowRight, ChevronLeft, ChevronRight, Phone, ShoppingCart } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Phone, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/UI/button';
 import 'swiper/css';
 import 'swiper/css/navigation';

@@ -24,6 +24,7 @@ export const scrollToSection = (id: string) => {
       behavior: 'smooth'
     });
   } catch (error) {
+    console.log(error);
     // Fallback to scrollIntoView
     element.scrollIntoView({
       behavior: 'smooth',

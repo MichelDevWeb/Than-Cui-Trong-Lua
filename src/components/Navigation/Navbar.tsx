@@ -14,7 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/UI/dropdown-menu";
 import { ZaloButton } from '@/components/UI/ZaloButton';
-import { scrollToSection } from '@/lib/utils';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -131,7 +130,7 @@ export default function Navbar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
-                {phoneNumbers.map((phone, index) => (
+                {phoneNumbers.map((phone) => (
                   <DropdownMenuItem
                     key={phone.number}
                     className="flex items-center gap-2 py-3 cursor-pointer"
@@ -164,7 +163,7 @@ export default function Navbar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
-                {phoneNumbers.map((phone, index) => (
+                {phoneNumbers.map((phone) => (
                   <DropdownMenuItem
                     key={phone.number}
                     className="flex items-center gap-2 py-3 cursor-pointer"

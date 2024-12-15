@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Instagram, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, Instagram, Youtube, MapPin, Phone } from 'lucide-react';
 
 const contacts = {
   phones: [

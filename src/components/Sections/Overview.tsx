@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ArrowRight, Flame, Shield, Timer, Star, ChevronLeft, ChevronRight, MapPin, Phone, Receipt, Youtube } from 'lucide-react';
+import { ArrowRight, Flame, Timer, Star, ChevronLeft, ChevronRight, MapPin, Phone, Receipt, Youtube } from 'lucide-react';
 import { Button } from '@/components/UI/button';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -75,7 +75,7 @@ const BannerSwiper = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[450px] aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] rounded-2xl overflow-hidden"
       >
-        {bannerImages.map((image, index) => (
+        {bannerImages.map((image) => (
           <SwiperSlide key={image.src}>
             <BannerSlide {...image} />
           </SwiperSlide>
@@ -214,7 +214,7 @@ export default function Overview() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                  {phoneNumbers.map((phone, index) => (
+                  {phoneNumbers.map((phone) => (
                     <DropdownMenuItem
                       key={phone.number}
                       className="flex items-center gap-2 py-3 cursor-pointer"
