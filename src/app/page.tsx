@@ -3,6 +3,7 @@ import Overview from '@/components/Sections/Overview';
 import Products from '@/components/Sections/Products';
 import Contact from '@/components/Sections/Contact';
 import BackToTop from '@/components/UI/BackToTop';
+import Footer from '@/components/Sections/Footer';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Products />
       <Contact />
       <BackToTop />
+      <Footer />
     </main>
   );
 }

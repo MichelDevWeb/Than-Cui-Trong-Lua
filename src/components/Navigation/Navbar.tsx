@@ -8,39 +8,57 @@ import { useTheme } from 'next-themes';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Phone, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/UI/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/UI/dropdown-menu";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Determine active section based on scroll position
+      const sections = ['overview', 'products', 'contact'];
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+
+      setActiveSection(currentSection || '');
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleCallOrder = () => {
-    window.location.href = 'tel:+84123456789';
-  };
+  const navItems = [
+    { href: '#overview', label: 'Giới thiệu' },
+    { href: '#products', label: 'Sản phẩm' },
+    { href: '#contact', label: 'Liên hệ' },
+  ];
+
+  const phoneNumbers = [
+    { number: '0965 112 864', label: 'Hotline 1' },
+    { number: '0365 420 225', label: 'Hotline 2' },
+    { number: '0909 678 646', label: 'Hotline 3' },
+  ];
 
   return (
     <motion.nav
       className={`fixed w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-background/90 backdrop-blur-md shadow-lg'
-          : 'bg-transparent py-2'
+        isScrolled ? 'bg-background/90 backdrop-blur-md shadow-lg' : 'bg-transparent py-2'
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -51,39 +69,58 @@ export default function Navbar() {
               alt="Than củi Trọng Lúa Logo"
               width={180}
               height={40}
-              className="h-10 transition-transform duration-300 group-hover:scale-105"
+              className="w-auto h-auto transition-transform duration-300 group-hover:scale-105"
               priority
             />
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link
-              href="#overview"
-              className="text-foreground/90 hover:text-foreground transition-colors duration-200 font-medium hover:scale-105 transform"
-            >
-              Giới thiệu
-            </Link>
-            <Link
-              href="#products"
-              className="text-foreground/90 hover:text-foreground transition-colors duration-200 font-medium hover:scale-105 transform"
-            >
-              Sản phẩm
-            </Link>
-            <Link
-              href="#contact"
-              className="text-foreground/90 hover:text-foreground transition-colors duration-200 font-medium hover:scale-105 transform"
-            >
-              Liên hệ
-            </Link>
-            <Button
-              variant="default"
-              onClick={handleCallOrder}
-              className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 rounded-full px-6"
-            >
-              <Phone className="h-4 w-4" />
-              Đặt hàng ngay
-            </Button>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative text-foreground/90 hover:text-foreground transition-colors duration-200 font-medium hover:scale-105 transform ${
+                  activeSection === item.href.slice(1) ? 'text-primary' : ''
+                }`}
+              >
+                {item.label}
+                {activeSection === item.href.slice(1) && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </Link>
+            ))}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="default"
+                  className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 rounded-full px-6"
+                >
+                  <Phone className="h-4 w-4" />
+                  Đặt hàng ngay
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                {phoneNumbers.map((phone, index) => (
+                  <DropdownMenuItem
+                    key={phone.number}
+                    className="flex items-center gap-2 py-3 cursor-pointer"
+                    onClick={() => window.location.href = `tel:+84${phone.number.substring(1)}`}
+                  >
+                    <Phone className="h-4 w-4 text-primary" />
+                    <div className="flex flex-col">
+                      <span className="font-medium">{phone.label}</span>
+                      <span className="text-sm text-muted-foreground">{phone.number}</span>
+                    </div>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             <Button
               variant="outline"
               className="flex items-center gap-2 hover:bg-primary/10 transition-all duration-300 transform hover:-translate-y-0.5 rounded-full"
@@ -96,15 +133,33 @@ export default function Navbar() {
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center space-x-3">
-            <Button
-              variant="default"
-              size="sm"
-              onClick={handleCallOrder}
-              className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
-            >
-              <Phone className="h-4 w-4" />
-              <span className="sr-only md:not-sr-only">Đặt hàng</span>
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
+                >
+                  <Phone className="h-4 w-4" />
+                  <span className="sr-only md:not-sr-only">Đặt hàng</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                {phoneNumbers.map((phone, index) => (
+                  <DropdownMenuItem
+                    key={phone.number}
+                    className="flex items-center gap-2 py-3 cursor-pointer"
+                    onClick={() => window.location.href = `tel:+84${phone.number.substring(1)}`}
+                  >
+                    <Phone className="h-4 w-4 text-primary" />
+                    <div className="flex flex-col">
+                      <span className="font-medium">{phone.label}</span>
+                      <span className="text-sm text-muted-foreground">{phone.number}</span>
+                    </div>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             <ThemeToggle />
             <button
               className="p-2 hover:bg-muted rounded-lg transition-colors duration-200"
@@ -112,25 +167,15 @@ export default function Navbar() {
             >
               <span className="sr-only">Mở menu</span>
               <svg
-                className="h-6 w-6 transition-transform duration-200"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 {isMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
             </button>
@@ -149,27 +194,20 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             <div className="px-2 py-4 space-y-1">
-              <Link
-                href="#overview"
-                className="block px-4 py-3 rounded-lg hover:bg-muted text-foreground/90 hover:text-foreground transition-all duration-200 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Giới thiệu
-              </Link>
-              <Link
-                href="#products"
-                className="block px-4 py-3 rounded-lg hover:bg-muted text-foreground/90 hover:text-foreground transition-all duration-200 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sản phẩm
-              </Link>
-              <Link
-                href="#contact"
-                className="block px-4 py-3 rounded-lg hover:bg-muted text-foreground/90 hover:text-foreground transition-all duration-200 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Liên hệ
-              </Link>
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`block px-4 py-3 rounded-lg hover:bg-muted text-foreground/90 hover:text-foreground transition-all duration-200 font-medium ${
+                    activeSection === item.href.slice(1)
+                      ? 'bg-primary/10 text-primary'
+                      : ''
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
               <div className="px-4 py-3">
                 <Button
                   variant="outline"
