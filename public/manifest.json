@@ -1,0 +1,81 @@
+{
+  "name": "Vựa Than Trọng Lúa - Than Củi Cao Cấp Tại Bình Dương",
+  "short_name": "Vựa Than Trọng Lúa",
+  "description": "Chuyên cung cấp than củi cao cấp, than thịt nướng, than bếp nướng cho nhà hàng, quán nướng tại Bình Dương và TP.HCM.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Sản phẩm",
+      "short_name": "Sản phẩm",
+      "description": "Xem danh sách sản phẩm than củi",
+      "url": "/#products",
+      "icons": [{ "src": "/images/logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Liên hệ",
+      "short_name": "Liên hệ",
+      "description": "Liên hệ đặt hàng",
+      "url": "/#contact",
+      "icons": [{ "src": "/images/logo.png", "sizes": "192x192" }]
+    }
+  ],
+  "categories": ["business", "shopping"],
+  "lang": "vi-VN",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/images/banner.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Trang chủ Vựa Than Trọng Lúa"
+    },
+    {
+      "src": "/images/banner.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Danh sách sản phẩm than củi"
+    }
+  ],
+  "iarc_rating_id": "",
+  "share_target": {
+    "action": "/share",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+} 
