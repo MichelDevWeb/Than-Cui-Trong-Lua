@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { ArrowRight, Flame, Shield, Timer, Star, ChevronLeft, ChevronRight, MapPin, Phone, Receipt, Youtube } from 'lucide-react';
 import { Button } from '@/components/UI/button';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, EffectFade, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,6 +17,7 @@ import { useSwiper } from 'swiper/react';
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/UI/dialog";
 
@@ -108,7 +109,7 @@ const SwiperNavButtons = () => {
 
 export default function Overview() {
   const [isOpen, setIsOpen] = useState(false);
-  const [videoUrl] = useState('https://www.youtube.com/embed/YOUR_VIDEO_ID'); // Replace YOUR_VIDEO_ID with actual YouTube video ID
+  const [videoUrl] = useState('https://www.youtube.com/embed/g68irNekAYs'); // Replace YOUR_VIDEO_ID with actual YouTube video ID
   
   const phoneNumbers = [
     { number: '0965 112 864', label: 'Hotline 1' },
@@ -138,7 +139,7 @@ export default function Overview() {
   ];
 
   return (
-    <section id="overview" className="min-h-screen flex items-center pt-16 sm:pt-24 pb-8 sm:pb-16 overflow-hidden w-full">
+    <section id="overview" className="min-h-screen flex items-center pt-20 sm:pt-24 pb-8 sm:pb-16 overflow-hidden w-full">
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -251,6 +252,9 @@ export default function Overview() {
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[800px] p-0">
+                  <DialogTitle className="sr-only">
+                    Video Demo Than Củi
+                  </DialogTitle>
                   <div className="aspect-video w-full">
                     <iframe
                       width="100%"

@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from 'next-themes';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { Phone, ShoppingCart } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { Button } from '@/components/UI/button';
 import {
   DropdownMenu,
@@ -14,6 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/UI/dropdown-menu";
+import { ZaloButton } from '@/components/UI/ZaloButton';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -121,13 +121,7 @@ export default function Navbar() {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button
-              variant="outline"
-              className="flex items-center gap-2 hover:bg-primary/10 transition-all duration-300 transform hover:-translate-y-0.5 rounded-full"
-            >
-              <ShoppingCart className="h-4 w-4" />
-              <span className="font-medium">Giỏ hàng</span>
-            </Button>
+            <ZaloButton />
             <ThemeToggle />
           </div>
 
@@ -209,13 +203,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="px-4 py-3">
-                <Button
-                  variant="outline"
-                  className="w-full flex items-center justify-center gap-2 hover:bg-primary/10 transition-all duration-300"
-                >
-                  <ShoppingCart className="h-4 w-4" />
-                  <span className="font-medium">Giỏ hàng</span>
-                </Button>
+                <ZaloButton />
               </div>
             </div>
           </motion.div>

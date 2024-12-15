@@ -4,6 +4,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Facebook, Instagram, Youtube, MapPin, Phone, Mail } from 'lucide-react';
 
+const contacts = {
+  phones: [
+    {
+      label: 'Hotline đặt hàng',
+      value: '096.511.2864',
+      href: 'tel:+84965112864'
+    }
+  ],
+  address: {
+    text: '78 Nguyễn Hữu Cảnh, khu phố, Thuận An, Bình Dương, Việt Nam',
+    href: 'https://maps.app.goo.gl/2LYRWqLG1wA8pwTB6'
+  },
+  social: {
+    zalo: 'https://zalo.me/0965112864',
+    facebook: 'https://www.facebook.com/lua.nguyenthi.75033',
+    instagram: 'https://instagram.com',
+    youtube: 'https://youtube.com'
+  }
+};
+
 export default function Footer() {
   return (
     <footer className="bg-background border-t">
@@ -21,32 +41,55 @@ export default function Footer() {
             <p className="text-muted-foreground text-sm">
               Chuyên cung cấp than củi cao cấp cho nhà hàng, quán nướng và các đầu bếp chuyên nghiệp.
             </p>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p>✓ Chất lượng than đảm bảo, nguồn gốc rõ ràng</p>
+              <p>✓ Giá cả cạnh tranh nhất thị trường</p>
+            </div>
           </div>
 
           {/* Contact Info */}
           <div>
             <h3 className="font-semibold mb-4">Liên hệ</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-                <MapPin className="h-4 w-4" />
-                <span>123 Đường ABC, Quận XYZ, TP.HCM</span>
-              </li>
               <li>
                 <Link 
-                  href="tel:+84123456789"
-                  className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                  href={contacts.address.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 text-muted-foreground hover:text-foreground transition-colors group"
                 >
-                  <Phone className="h-4 w-4" />
-                  <span>0123 456 789</span>
+                  <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
+                  <span className="group-hover:text-primary transition-colors">
+                    {contacts.address.text}
+                  </span>
                 </Link>
               </li>
+              {contacts.phones.map((phone, index) => (
+                <li key={index}>
+                  <Link 
+                    href={phone.href}
+                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <Phone className="h-4 w-4" />
+                    <span>{phone.value} - {phone.label}</span>
+                  </Link>
+                </li>
+              ))}
               <li>
                 <Link 
-                  href="mailto:info@thancuitronglua.com"
+                  href={contacts.social.zalo}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <Mail className="h-4 w-4" />
-                  <span>info@thancuitronglua.com</span>
+                  <Image
+                    src="/zalo.png"
+                    alt="Zalo icon"
+                    width={16}
+                    height={16}
+                    className="h-4 w-4"
+                  />
+                  <span>Zalo: {contacts.phones[0].value}</span>
                 </Link>
               </li>
             </ul>
@@ -88,7 +131,7 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">Kết nối với chúng tôi</h3>
             <div className="flex space-x-4">
               <Link
-                href="https://facebook.com"
+                href={contacts.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
@@ -96,7 +139,7 @@ export default function Footer() {
                 <Facebook className="h-5 w-5" />
               </Link>
               <Link
-                href="https://instagram.com"
+                href={contacts.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
@@ -104,7 +147,7 @@ export default function Footer() {
                 <Instagram className="h-5 w-5" />
               </Link>
               <Link
-                href="https://youtube.com"
+                href={contacts.social.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
@@ -117,7 +160,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© 2024 Than Củi Trọng Lúa. Tất cả quyền được bảo lưu.</p>
+          <p>© {new Date().getFullYear()} Than Củi Trọng Lúa. Tất cả quyền được bảo lưu.</p>
         </div>
       </div>
     </footer>
