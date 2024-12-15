@@ -34,7 +34,8 @@ const contacts = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-gradient-to-b from-white to-gray-50 
+      dark:from-gray-950 dark:to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,9 +43,7 @@ export default function Contact() {
           className="text-center space-y-4 mb-12"
         >
           <h2 className="text-3xl font-bold 
-            bg-clip-text text-transparent bg-gradient-to-r 
-            from-primary to-primary/80
-            drop-shadow-sm">
+            bg-clip-text drop-shadow-sm !text-black">
             Liên Hệ Với Chúng Tôi
           </h2>
           <p className="text-gray-700 max-w-2xl mx-auto text-base font-medium">
@@ -58,7 +57,7 @@ export default function Contact() {
               {contacts.map((contact, index) => (
                 <div key={index} className="flex items-center space-x-4 text-lg">
                   {contact.type === 'phone' ? (
-                    <Phone className="w-6 h-6 text-primary" />
+                    <Phone className="w-6 h-6 !text-black" />
                   ) : (
                     <Image
                       src="/zalo.png"
@@ -69,13 +68,13 @@ export default function Contact() {
                     />
                   )}
                   <div>
-                    <p className="font-semibold">{contact.label}:</p>
+                    <p className="font-semibold !text-black">{contact.label}:</p>
                     <a 
                       href={contact.href}
                       target={contact.type === 'zalo' ? '_blank' : undefined}
                       rel={contact.type === 'zalo' ? 'noopener noreferrer' : undefined}
                       className={`hover:underline transition-all ${
-                        contact.type === 'phone' ? 'text-primary' : 'text-[#0068FF]'
+                        contact.type === 'phone' ? '!text-black' : 'text-[#0068FF]'
                       }`}
                     >
                       {contact.value}
@@ -85,14 +84,14 @@ export default function Contact() {
               ))}
               
               <div className="flex items-start space-x-4 text-lg">
-                <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <MapPin className="w-6 h-6 !text-black flex-shrink-0 mt-1" />
                 <div>
-                  <p className="font-semibold">Địa chỉ:</p>
+                  <p className="font-semibold text-black">Địa chỉ:</p>
                   <a 
                     href="https://maps.app.goo.gl/2LYRWqLG1wA8pwTB6"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-700 hover:text-primary transition-colors"
+                    className="text-gray-700 hover:!text-black transition-colors"
                   >
                     78 Nguyễn Hữu Cảnh, khu phố, Thuận An, Bình Dương, Việt Nam
                   </a>
@@ -101,7 +100,7 @@ export default function Contact() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold">Tại sao chọn chúng tôi?</h3>
+              <h3 className="text-xl font-semibold text-black">Tại sao chọn chúng tôi?</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>✓ Chất lượng than đảm bảo, nguồn gốc rõ ràng</li>
                 <li>✓ Giá cả cạnh tranh nhất thị trường</li>
@@ -113,8 +112,7 @@ export default function Contact() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Button
                 className="w-full rounded-full 
-                  bg-gradient-to-r from-primary to-primary/80
-                  hover:from-primary/80 hover:to-primary
+                  !bg-black
                   shadow-lg shadow-primary/30
                   text-white font-semibold
                   transition-all duration-300"

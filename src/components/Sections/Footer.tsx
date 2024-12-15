@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Facebook, Instagram, Youtube, MapPin, Phone } from 'lucide-react';
@@ -25,8 +26,14 @@ const contacts = {
 };
 
 export default function Footer() {
+  const [currentYear, setCurrentYear] = useState('');
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear().toString());
+  }, []);
+
   return (
-    <footer className="bg-background border-t">
+    <footer className="bg-background border-t bg-gradient-to-b from-gray-400 to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -160,7 +167,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Than Củi Trọng Lúa. Tất cả quyền được bảo lưu.</p>
+          <p>© {currentYear} Than Củi Trọng Lúa. Tất cả quyền được bảo lưu.</p>
         </div>
       </div>
     </footer>

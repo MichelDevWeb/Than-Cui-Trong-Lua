@@ -140,7 +140,8 @@ export default function Overview() {
   ];
 
   return (
-    <section id="overview" className="min-h-screen flex items-center pt-20 sm:pt-24 pb-8 sm:pb-16 overflow-hidden w-full">
+    <section id="overview" className="min-h-screen flex items-center pt-20 sm:pt-24 pb-8 sm:pb-16 overflow-hidden w-full bg-gradient-to-b from-background to-gray-100/50 
+      dark:from-black dark:to-gray-900/90">
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

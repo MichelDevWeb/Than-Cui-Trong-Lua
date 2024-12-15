@@ -16,11 +16,19 @@ import {
 import { ZaloButton } from '@/components/UI/ZaloButton';
 
 export default function Navbar() {
+  const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
+  // Handle mounting
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
@@ -40,7 +48,7 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mounted]);
 
   const navItems = [
     { id: 'overview', label: 'Giới thiệu' },
@@ -58,6 +66,8 @@ export default function Navbar() {
     e.preventDefault();
     setIsMenuOpen(false);
     
+    if (!mounted) return;
+
     // Add a small delay to ensure the menu animation completes
     setTimeout(() => {
       const element = document.getElementById(id);
@@ -74,8 +84,13 @@ export default function Navbar() {
           behavior: 'smooth'
         });
       }
-    }, 300); // Increased delay to ensure menu closes
+    }, 100);
   };
+
+  // Don't render anything until mounted
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <motion.nav
