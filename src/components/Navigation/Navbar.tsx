@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/UI/dropdown-menu";
 import { ZaloButton } from '@/components/UI/ZaloButton';
+import { scrollToSection } from '@/lib/utils';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,9 +44,9 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { href: '#overview', label: 'Giới thiệu' },
-    { href: '#products', label: 'Sản phẩm' },
-    { href: '#contact', label: 'Liên hệ' },
+    { id: 'overview', label: 'Giới thiệu' },
+    { id: 'products', label: 'Sản phẩm' },
+    { id: 'contact', label: 'Liên hệ' },
   ];
 
   const phoneNumbers = [
@@ -53,6 +54,29 @@ export default function Navbar() {
     { number: '0365 420 225', label: 'Hotline 2' },
     { number: '0909 678 646', label: 'Hotline 3' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    
+    // Add a small delay to ensure the menu animation completes
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        // Get the navbar height for offset
+        const navbar = document.querySelector('nav');
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 300); // Increased delay to ensure menu closes
+  };
 
   return (
     <motion.nav
@@ -78,14 +102,15 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
-                key={item.href}
-                href={item.href}
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleNavClick(e, item.id)}
                 className={`relative text-foreground/90 hover:text-foreground transition-colors duration-200 font-medium hover:scale-105 transform ${
-                  activeSection === item.href.slice(1) ? 'text-primary' : ''
+                  activeSection === item.id ? 'text-primary' : ''
                 }`}
               >
                 {item.label}
-                {activeSection === item.href.slice(1) && (
+                {activeSection === item.id && (
                   <motion.div
                     layoutId="activeSection"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
@@ -190,14 +215,14 @@ export default function Navbar() {
             <div className="px-2 py-4 space-y-1">
               {navItems.map((item) => (
                 <Link
-                  key={item.href}
-                  href={item.href}
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleNavClick(e, item.id)}
                   className={`block px-4 py-3 rounded-lg hover:bg-muted text-foreground/90 hover:text-foreground transition-all duration-200 font-medium ${
-                    activeSection === item.href.slice(1)
+                    activeSection === item.id
                       ? 'bg-primary/10 text-primary'
                       : ''
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
                 </Link>

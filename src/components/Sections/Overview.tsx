@@ -20,6 +20,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/UI/dialog";
+import { scrollToSection } from '@/lib/utils';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -233,9 +234,7 @@ export default function Overview() {
                 size="default"
                 variant="outline"
                 className="group hover:bg-primary/10 transition-all duration-300 transform hover:-translate-y-0.5 rounded-full w-full sm:w-auto"
-                onClick={() => {
-                  document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => scrollToSection('products')}
               >
                 Xem sản phẩm
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -12,6 +12,7 @@ Than Củi Trọng Lúa is a premium charcoal supplier specializing in high-qual
 - 🛡️ **Safety Certified**: HACCP food safety standards
 - ⚡ **Fast Delivery**: 2-hour delivery in HCMC
 - 🚚 **Free Shipping**: Available for qualifying orders
+- 📱 **Responsive Navigation**: Smooth scrolling and mobile-friendly navigation
 
 ## Project Structure
 

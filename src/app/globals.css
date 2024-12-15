@@ -72,6 +72,18 @@ html {
 }
 
 /* Add any custom styles here */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust based on your navbar height */
+}
+
+/* For Safari support */
+@supports (-webkit-overflow-scrolling: touch) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   &::after {
