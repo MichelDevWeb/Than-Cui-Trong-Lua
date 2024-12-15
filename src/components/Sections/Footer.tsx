@@ -33,7 +33,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-background border-t bg-gradient-to-b from-gray-400 to-black">
+    <footer className="bg-background border-t">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -46,7 +46,7 @@ export default function Footer() {
               className="h-10 w-auto"
             />
             <p className="text-muted-foreground text-sm">
-              Chuyên cung cấp than củi cao cấp cho nhà hàng, quán nướng và các đầu bếp chuyên nghiệp.
+              Chuyên cung cấp than củi cao cấp cho nhà hàng, quán nướng và các tạp hoá.
             </p>
             <div className="space-y-2 text-sm text-muted-foreground">
               <p>✓ Chất lượng than đảm bảo, nguồn gốc rõ ràng</p>
@@ -167,7 +167,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© {currentYear} Than Củi Trọng Lúa. Tất cả quyền được bảo lưu.</p>
+          <p>© {currentYear} Vựa Than Trọng Lúa. Tất cả quyền được bảo lưu.</p>
         </div>
       </div>
     </footer>

@@ -73,7 +73,7 @@ const BannerSwiper = () => {
           clickable: true,
         }}
         modules={[Autoplay, Pagination, Navigation]}
-        className="w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[450px] aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] rounded-2xl overflow-hidden"
+        className="w-[340px] xs:w-full h-[300px] xs:h-[400px] sm:h-[400px] md:h-[450px] lg:h-[450px] aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] rounded-2xl overflow-hidden"
       >
         {bannerImages.map((image) => (
           <SwiperSlide key={image.src}>
@@ -301,9 +301,9 @@ export default function Overview() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
               className="absolute 
-                top-2 -right-1
-                sm:top-3 sm:-right-3 
-                md:top-4 md:-right-4 
+                top-2 -left-1
+                sm:top-3 sm:-left-3 
+                md:top-4 md:-left-4 
                 bg-gradient-to-r from-primary to-primary/90 
                 text-primary-foreground 
                 px-2 py-1
@@ -326,9 +326,9 @@ export default function Overview() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7, duration: 0.5 }}
               className="absolute 
-                top-12 -right-1
-                sm:top-16 sm:-right-3 
-                md:top-20 md:-right-4 
+                top-12 -left-1
+                sm:top-16 sm:-left-3 
+                md:top-20 md:-left-4 
                 bg-gradient-to-r from-orange-500 to-orange-400 
                 text-white 
                 px-2 py-1

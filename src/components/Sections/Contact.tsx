@@ -26,7 +26,7 @@ const contacts = [
   },
   {
     type: 'zalo',
-    label: 'Zalo tư vấn 2',
+    label: 'Zalo đặt hàng 2',
     value: '0365 420 225',
     href: 'https://zalo.me/0365420225'
   }

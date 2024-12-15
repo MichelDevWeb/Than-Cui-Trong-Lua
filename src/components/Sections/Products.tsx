@@ -118,6 +118,39 @@ const productDiscounts: Record<number, number> = {
   12: 10, // Bếp Than Tổ Ong 2
 };
 
+const SwiperNavButtons = () => {
+  return (
+    <div className="flex gap-3">
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="swiper-button-prev w-11 h-11 
+          bg-gradient-to-r from-black to-gray-800 
+          dark:from-gray-800 dark:to-black
+          rounded-full shadow-lg flex items-center justify-center 
+          hover:from-gray-800 hover:to-black
+          dark:hover:from-black dark:hover:to-gray-800
+          transition-all duration-300
+          border border-gray-700/20 dark:border-gray-600/20">
+        <ChevronLeft className="w-6 h-6 text-white dark:text-gray-100" strokeWidth={2.5} />
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="swiper-button-next w-11 h-11 
+          bg-gradient-to-r from-black to-gray-800 
+          dark:from-gray-800 dark:to-black
+          rounded-full shadow-lg flex items-center justify-center 
+          hover:from-gray-800 hover:to-black
+          dark:hover:from-black dark:hover:to-gray-800
+          transition-all duration-300
+          border border-gray-700/20 dark:border-gray-600/20">
+        <ChevronRight className="w-6 h-6 text-white dark:text-gray-100" strokeWidth={2.5} />
+      </motion.button>
+    </div>
+  );
+};
+
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState('all');
   
@@ -148,12 +181,13 @@ export default function Products() {
           border border-gray-200/50
           backdrop-blur-sm transition-all duration-300 hover:scale-[1.02]"
       >
-        <div className="relative aspect-square">
+        <div className="relative aspect-[4/3] overflow-hidden">
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-500 ease-out 
+              group-hover:scale-125"
           />
           {product.isBestSeller && (
             <div className="absolute top-2 right-2 flex items-center gap-1.5">
@@ -198,12 +232,11 @@ export default function Products() {
             </div>
           )}
         </div>
-        <div className="p-4 space-y-4">
-          <h4 className="font-semibold text-gray-800 text-center text-lg
-            hover:text-primary transition-colors duration-300">
+        <div className="p-3 space-y-3">
+          <h4 className="font-semibold text-gray-800 text-center text-base">
             {product.name}
           </h4>
-          <div className="space-y-3">
+          <div className="space-y-2">
             <Button
               className="w-full rounded-full 
                 bg-gradient-to-r from-black to-gray-800 hover:from-gray-800 hover:to-black
@@ -271,20 +304,7 @@ export default function Products() {
               drop-shadow-sm">
               Sản phẩm nổi bật
             </h3>
-            <div className="flex gap-2">
-              <button className="swiper-button-prev w-10 h-10 bg-white/80 dark:bg-gray-800/80 
-                rounded-full shadow-lg flex items-center justify-center 
-                hover:bg-primary/10 dark:hover:bg-primary/20 transition-all duration-300
-                border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
-                <ChevronLeft className="w-6 h-6 text-foreground dark:text-gray-100" />
-              </button>
-              <button className="swiper-button-next w-10 h-10 bg-white/80 dark:bg-gray-800/80 
-                rounded-full shadow-lg flex items-center justify-center 
-                hover:bg-primary/10 dark:hover:bg-primary/20 transition-all duration-300
-                border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
-                <ChevronRight className="w-6 h-6 text-foreground dark:text-gray-100" />
-              </button>
-            </div>
+            <SwiperNavButtons />
           </div>
 
           <Swiper
@@ -300,9 +320,9 @@ export default function Products() {
               disableOnInteraction: false,
             }}
             breakpoints={{
-              640: { slidesPerView: 2, spaceBetween: 20 },
-              768: { slidesPerView: 3, spaceBetween: 25 },
-              1024: { slidesPerView: 4, spaceBetween: 30 },
+              640: { slidesPerView: 2, spaceBetween: 16 },
+              768: { slidesPerView: 3, spaceBetween: 20 },
+              1024: { slidesPerView: 4, spaceBetween: 24 },
             }}
             className="pb-12 !px-3 !py-3"
           >
