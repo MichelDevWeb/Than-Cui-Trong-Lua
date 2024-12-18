@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { BackToTop } from '@/components/UI/BackToTop';
-
+import { Analytics } from "@vercel/analytics/react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -158,6 +158,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <BackToTop />
+        <Analytics />
       </body>
     </html>
   );
